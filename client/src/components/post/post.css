@@ -1,0 +1,85 @@
+.post {
+    background-color: var(--bg);
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    border-radius: 20px;
+    background-color: var(--bg);
+    color: var(--textColor);
+    margin: 10px 4%;
+
+}
+
+.post>* {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.post span {
+    color: var(--textColorSoft);
+    padding: 0px;
+    margin: 0px;
+}
+
+.post .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.post .top .user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.post .top .user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.post .top .user .userInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+}
+
+.post .body {
+    margin-bottom: 5px;
+    padding: 10px 0px;
+    border-bottom: 1px solid var(--border);
+}
+
+.post .body .postDesc {
+    margin-bottom: 5px;
+}
+
+.post .body img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    margin-top: 5px;
+}
+
+.post .bottom {
+    display: flex;
+    align-items: center;
+    margin: 5px 0px;
+    gap: 15px;
+}
+
+.post .bottom .bottomIcons {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}

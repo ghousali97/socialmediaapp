@@ -1,0 +1,132 @@
+.register {
+    background-color: #cdc0fe;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.register .card {
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+    min-height: 600px;
+    width: 50%;
+    overflow: hidden;
+
+}
+
+.register .card>* {
+    flex: 1;
+
+}
+
+.register .card .right {
+
+    flex: 1;
+    background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
+        url("https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600") center;
+    background-size: cover;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: white;
+    padding-top: 75px;
+}
+
+.register .card .right h1 {
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 0px;
+}
+
+.register .card .right span.logo {
+    font-size: 70px;
+    font-weight: 700;
+    ;
+
+}
+
+
+.register .card .right span {
+    font-size: 14px;
+}
+
+.register .card .right button a {
+    width: 100%
+}
+
+.register .card .right button {
+    width: 50%;
+    padding: 10px 15px;
+    border: none;
+    background-color: white;
+    color: rebeccapurple;
+    font-weight: bold;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+
+
+
+.register .card .left {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: flex-start;
+}
+
+.register .card .left span {
+    color: #555;
+    font-weight: 600;
+    font-size: 36px;
+}
+
+.register .card .left form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.register .card .left form input {
+    border: none;
+    border-bottom: 1px solid lightgray;
+    padding: 20px 10px;
+}
+
+
+.register .card .left button {
+    margin-top: 25px;
+    width: 50%;
+    padding: 10px 15px;
+    border: none;
+    color: white;
+    background-color: rebeccapurple;
+    font-weight: bold;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+@media (max-width:900px) {
+    .register {
+        background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
+            url("https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600") center;
+        background-size: cover;
+    }
+
+    .register .card {
+        width: 90%;
+        padding: 0px 10px;
+        min-height: 50vh;
+    }
+
+    .register .card .right {
+        display: none;
+    }
+}

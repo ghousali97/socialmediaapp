@@ -1,0 +1,66 @@
+.leftbar {
+    flex: 4;
+    position: sticky;
+    top: 60px;
+    height: calc(100vh - 60px);
+    overflow: scroll;
+    background-color: var(--bg);
+    color: var(--textColor);
+}
+
+.leftbar .container {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 20px;
+
+
+}
+
+.leftbar .container hr {
+    margin: 5px 0px;
+    border: none;
+    background-color: var(--border);
+    height: 0.5px;
+}
+
+.leftbar .container .section {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0px;
+}
+
+
+.leftbar .container .section .user,
+.item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0px;
+
+}
+
+.leftbar .container .section>span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
+
+}
+
+.leftbar .container .section .user span {
+    font-size: 14px;
+    margin: 0px 10px;
+
+}
+
+.leftbar .container .section .item span {
+    font-size: 14px;
+    margin: 0px 10px;
+
+}
+
+.leftbar img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+}

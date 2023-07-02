@@ -1,0 +1,133 @@
+.login {
+    background-color: #cdc0fe;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.login .card {
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+    min-height: 600px;
+    width: 50%;
+    overflow: hidden;
+
+}
+
+.login .card>* {
+    flex: 1;
+
+}
+
+.login .card .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5px;
+    align-items: left;
+    padding: 50px;
+    background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
+        url("https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600") center;
+    background-size: cover;
+    color: white;
+}
+
+.login .card .heading {
+    margin-top: 50px;
+}
+
+.login .card .left h1 {
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 0px;
+}
+
+.login .card .left span.logo {
+    font-size: 70px;
+    font-weight: 700;
+    ;
+
+}
+
+
+.login .card .left span {
+    font-size: 14px;
+    margin: 20px 0px;
+}
+
+
+
+.login .card .left button {
+    margin-top: ;
+    width: 50%;
+    padding: 10px 15px;
+    border: none;
+    background-color: white;
+    color: rebeccapurple;
+    font-weight: bold;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+
+
+
+.login .card .right {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.login .card .right span {
+    color: #555;
+    font-weight: 600;
+    font-size: 36px;
+}
+
+.login .card .right form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.login .card .right form input {
+    border: none;
+    border-bottom: 1px solid lightgray;
+    padding: 20px 10px;
+}
+
+
+.login .card .right button {
+    width: 50%;
+    padding: 10px 15px;
+    border: none;
+    color: white;
+    background-color: rebeccapurple;
+    font-weight: bold;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+@media (max-width:900px) {
+    .login {
+        background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
+            url("https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600") center;
+        background-size: cover;
+    }
+
+    .login .card {
+        width: 90%;
+        padding: 0px 10px;
+        min-height: 50vh;
+    }
+
+    .login .card .left {
+        display: none;
+    }
+}

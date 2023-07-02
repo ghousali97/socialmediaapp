@@ -1,0 +1,91 @@
+.comments {
+    display: flex;
+    flex-direction: column;
+}
+
+.comments .write {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0px;
+}
+
+.comments .write img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.comments .write input {
+    width: 100%;
+    margin: 0px 10px;
+    margin-right: 5px;
+    max-height: 10px;
+    padding: 10px;
+    border: 1px solid var(--border);
+    background-color: transparent;
+    color: var(--textColor);
+}
+
+.comments .write button {
+    border: none;
+    background-color: #5271ff;
+    color: white;
+    padding: 7px 15px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.comment {
+    display: flex;
+    margin: 10px 0px;
+
+}
+
+
+
+.comment .user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+
+.comment .info {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-left: 10px;
+
+
+}
+
+.comment .info span {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.comment .info p {
+    color: var(--textColorSoft);
+    font-size: 13px;
+}
+
+.comment .info .centre {
+    display: flex;
+    flex: 6;
+    flex-direction: column;
+    gap: 5px
+}
+
+.comment .info .right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+
+
+}

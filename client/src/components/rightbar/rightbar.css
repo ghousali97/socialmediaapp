@@ -1,0 +1,127 @@
+.rightbar {
+    flex: 5;
+    position: sticky;
+    top: 60px;
+    height: calc(100vh - 60px);
+    overflow: scroll;
+    background-color: var(--bgSoft);
+    color: var(--textColor);
+}
+
+.rightbar .container {
+    padding: 5px 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rightbar .container .section {
+
+    box-shadow: 0px 0px 5px var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background-color: var(--bg);
+    border-radius: 5px;
+    margin: 10px 0px;
+
+}
+
+.rightbar .container .section>span {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: var(--textColorSoft);
+}
+
+.rightbar .container .section .item {
+    display: flex;
+    align-items: center;
+
+
+}
+
+.rightbar .container .section .item .user {
+    display: flex;
+    align-items: center;
+    margin: 5px 0px;
+
+}
+
+.rightbar .container .section .friendSuggestion {
+    justify-content: space-between;
+}
+
+
+.rightbar .container .section .friendSuggestion .suggestionButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rightbar .container .section .friendSuggestion .suggestionButton button {
+    margin: 0px 5px;
+    border-radius: 4px;
+    border: none;
+    padding: 5px 10px;
+    color: var(--textColorSoft);
+    cursor: pointer;
+}
+
+.rightbar .container .section .friendSuggestion .suggestionButton button:first-child {
+    background-color: #5271ff;
+}
+
+.rightbar .container .section .friendSuggestion .suggestionButton button:last-child {
+    background-color: #f0544f;
+}
+
+.rightbar .container .section .activities .user {
+    display: flex;
+    flex: 5;
+    align-items: center;
+    margin: 5px 0px;
+
+}
+
+.rightbar .container .section .activity {
+    flex: 11;
+}
+
+.rightbar .container .section .timestamp {
+    flex: 4;
+}
+
+.rightbar .container .section .item .user img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.rightbar .container .section .item .user span {
+    font-size: 14px;
+    margin: 0px 10px;
+    margin-right: 5px;
+
+}
+
+
+
+.rightbar .container .section .activity span {
+    font-size: 14px;
+    color: var(--textColorSoft);
+}
+
+.rightbar .container .section .timestamp span {
+    font-size: 12px;
+    color: var(--textColorSoft);
+
+}
+
+.rightbar .container .section .onlineStatus {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    align-items: left;
+    background-color: green;
+}

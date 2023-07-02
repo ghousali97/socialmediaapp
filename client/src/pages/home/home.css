@@ -1,0 +1,12 @@
+.home {
+    background-color: var(--bgSoft);
+}
+
+.home .homeContainer {
+    display: flex;
+}
+
+.home .homeContainer .center {
+    flex: 12;
+
+}
