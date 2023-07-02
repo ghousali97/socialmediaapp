@@ -62,7 +62,7 @@
 
 
 .login .card .left button {
-    margin-top: ;
+
     width: 50%;
     padding: 10px 15px;
     border: none;
@@ -114,7 +114,7 @@
     cursor: pointer;
 }
 
-@media (max-width:900px) {
+@media (max-width:480px) {
     .login {
         background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
             url("https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600") center;
@@ -123,11 +123,47 @@
 
     .login .card {
         width: 90%;
-        padding: 0px 10px;
-        min-height: 50vh;
+        padding: 5px 12px;
+        min-height: 40vh;
+
     }
 
     .login .card .left {
         display: none;
+    }
+
+    .login .card .right {
+        padding: 20px 10px;
+        gap: 15px
+    }
+
+    .login .card .right a {
+        text-decoration: none;
+        margin-top: 10px;
+    }
+
+    .login .card .right span.link {
+        font-size: 12px;
+    }
+
+    .login .card .right span.title {
+        color: rebeccapurple;
+        font-weight: 600;
+        font-size: 32px;
+    }
+
+    .login .card .right form {
+
+        gap: 10px;
+    }
+
+    .login .card .right form input {
+
+        padding: 15px 0px;
+    }
+
+    .login .card .right button {
+        margin-top: 10px;
+        width: 40%;
     }
 }

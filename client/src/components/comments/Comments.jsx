@@ -30,7 +30,7 @@ const Comments = () => {
         <div className='comments'>
             <div className='write'>
                 <img alt="" src={user.img} />
-                <input />
+                <input name="myComment" placeholder='Write your comment ... ' />
                 <button>Send</button>
             </div>
             {

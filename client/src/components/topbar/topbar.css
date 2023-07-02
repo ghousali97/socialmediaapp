@@ -10,6 +10,10 @@
 }
 
 
+.topbar a {
+    color: var(--textColor);
+}
+
 .topbar>* {
     flex: 1
 }
@@ -34,6 +38,10 @@
 
 .topbar .left .topbarIcon {
     margin: 0px 10px;
+}
+
+.topbar .left .topbarIcon.menuIcon {
+    display: none;
 }
 
 .topbar .left .searchContainer {
@@ -94,7 +102,40 @@
         display: none;
     }
 
-    .topbar .left .searchContainer {
+    .topbar .left {
+        position: relative;
+    }
+
+    .topbar .left .topbarIcon:nth-of-type(2),
+    .topbarIcon:nth-of-type(4) {
         display: none;
     }
+
+    .topbar .left .searchContainer {
+        display: flex;
+        width: 0%;
+        height: 0%;
+        align-items: center;
+        justify-content: flex-start;
+        border: none;
+        position: absolute;
+        right: 70px;
+
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .topbar .left .searchContainer input {
+        display: none;
+    }
+
+    .topbar .left .topbarIcon.menuIcon {
+        display: flex;
+        position: absolute;
+        right: 0;
+
+    }
+
+
+
 }

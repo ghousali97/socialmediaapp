@@ -113,7 +113,8 @@
     cursor: pointer;
 }
 
-@media (max-width:900px) {
+
+@media (max-width:480px) {
     .register {
         background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
             url("https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600") center;
@@ -122,11 +123,45 @@
 
     .register .card {
         width: 90%;
-        padding: 0px 10px;
-        min-height: 50vh;
+        padding: 5px 12px;
+        min-height: 40vh;
+
     }
 
     .register .card .right {
         display: none;
+    }
+
+    .register .card .left {
+        padding: 20px 10px;
+        gap: 15px
+    }
+
+    .register .card .left a {
+        text-decoration: none;
+        margin-top: 10px;
+    }
+
+    .register .card .left span.link {
+        font-size: 12px;
+    }
+
+    .register .card .left span.title {
+        color: rebeccapurple;
+        font-weight: 600;
+        font-size: 32px;
+    }
+
+    .register .card .left form {
+        gap: 10px;
+    }
+
+    .register .card .left form input {
+        padding: 10px 0px;
+    }
+
+    .register .card .left button {
+        margin-top: 10px;
+        width: 40%;
     }
 }

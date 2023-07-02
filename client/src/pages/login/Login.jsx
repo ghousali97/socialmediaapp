@@ -38,18 +38,20 @@ function Login() {
 
                 </div>
                 <div className='right'>
-                    <span>Login</span>
+                    <span className='title'>Login</span>
                     <form>
-                        <input type="text" placeholder='username' name='username' value={username} onChange={(e) => {
+                        <input type="text" placeholder='Username' name='username' value={username} onChange={(e) => {
                             let username = e.target.value;
                             setUsername(username);
                         }} />
-                        <input type="text" placeholder='password' name='password' value={password} onChange={(e) => {
+                        <input type="text" placeholder='Password' name='password' value={password} onChange={(e) => {
                             let password = e.target.value;
                             setPassword(password);
                         }} />
                         <button onClick={handleLogin}>Log In</button>
+
                     </form>
+                    <a href="/register"><span className='link'>Don't have an account?</span></a>
                 </div>
             </div>
         </div>

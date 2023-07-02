@@ -8,7 +8,7 @@ function Register() {
             <div className='card'>
 
                 <div className='left'>
-                    <span>Register</span>
+                    <span className='title'>Register</span>
                     <form>
                         <input type="text" placeholder='Username' name='username' />
                         <input type="text" placeholder='Email' name='email' />
@@ -16,6 +16,7 @@ function Register() {
                         <input type="text" placeholder='Password' name='password' />
                         <button>Register</button>
                     </form>
+                    <a href="/login"><span className='link'>Already have an account?</span></a>
                 </div>
                 <div className='right'>
                     <div className='heading'>

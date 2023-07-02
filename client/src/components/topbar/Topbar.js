@@ -5,7 +5,7 @@ import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-
+import MenuIcon from '@mui/icons-material/Menu';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
@@ -25,7 +25,7 @@ function Topbar() {
             </span>
             </div>
             <div className='topbarIcon'>
-                <HomeOutlinedIcon />
+                <a href="/">  <HomeOutlinedIcon /></a>
             </div>
             <div className='topbarIcon' onClick={toggle}>
                 {darkMode ? <WbSunnyOutlinedIcon /> : <DarkModeOutlinedIcon />}
@@ -39,6 +39,9 @@ function Topbar() {
                 <SearchOutlinedIcon />
 
                 <input placeholder='search' type="text" />
+            </div>
+            <div className='topbarIcon menuIcon'>
+                <MenuIcon />
             </div>
         </div>
         <div className='right'>
