@@ -18,6 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+
 }
 
 .topbar .left .logo {
@@ -88,22 +89,11 @@
 }
 
 @media (max-width:900px) {
-
-    .topbar {
-        padding: 5px;
-    }
-
-
-
-    .topbar .left {
-        flex-direction: column;
-    }
-
-    .topbar .topbarIcon {
+    .topbar .right {
         display: none;
     }
 
-    .topbar .right {
+    .topbar .left .searchContainer {
         display: none;
     }
 }

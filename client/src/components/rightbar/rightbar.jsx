@@ -1,7 +1,6 @@
 
-import { useContext } from 'react';
 import './rightbar.css';
-import { AuthContext } from '../../context/authContext';
+
 
 function RightBar() {
 

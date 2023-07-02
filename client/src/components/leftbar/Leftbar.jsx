@@ -1,5 +1,5 @@
 import './leftbar.css';
-import Friends from "../../assets/1.png";
+
 import Groups from "../../assets/2.png";
 import Market from "../../assets/3.png";
 import Watch from "../../assets/4.png";
