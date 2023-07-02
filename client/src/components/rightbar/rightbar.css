@@ -1,5 +1,5 @@
 .rightbar {
-    flex: 5;
+    flex: 10;
     position: sticky;
     top: 60px;
     height: calc(100vh - 60px);
@@ -9,7 +9,7 @@
 }
 
 .rightbar .container {
-    padding: 5px 15px;
+    padding: 5px 5px;
     display: flex;
     flex-direction: column;
 }

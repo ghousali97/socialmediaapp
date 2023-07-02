@@ -9,9 +9,9 @@ function Home() {
     return (
         <div className="home">
             <Topbar />
-            <div className="homeContainer">
+            <div className="homeContainer" style={{ display: 'flex' }}>
                 <Leftbar />
-                <div className="center">
+                <div className="center" style={{ flex: 26 }}>
                     <Posts />
                 </div>
                 <RightBar />
