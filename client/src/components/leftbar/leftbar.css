@@ -64,3 +64,9 @@
     border-radius: 50%;
     object-fit: cover;
 }
+
+@media (max-width:480px) {
+    .leftbar {
+        display: none;
+    }
+}

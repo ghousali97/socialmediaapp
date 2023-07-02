@@ -125,3 +125,9 @@
     align-items: left;
     background-color: green;
 }
+
+@media (max-width:480px) {
+    .rightbar {
+        display: none;
+    }
+}
