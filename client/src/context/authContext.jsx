@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-
+import axios from "axios";
 
 
 //this is the specific context that will be refered to by our useContext hook and hence it needs to be exported
@@ -16,16 +16,18 @@ export const AuthContextProvider = ({ children }) => {
 
 
 
-    //useEffect hook will be triggered when the elements using our context are loaded.
+    //useEffect hook will be triggered when the application first loads and when dependencies are modified
+    // using our context are loaded.
     useEffect(() => {
         console.log('Use effect called for auth context!');
         localStorage.setItem('user', JSON.stringify(user));
     }, [user]);
 
-    const login = (user) => {
-        setUser(user);
+    const login = async (inputs) => {
+        const res = await axios.post("http://localhost:4001/api/auth/login", inputs, { withCredentials: true, credentials: 'include' });
+        setUser(res.data);
+    };
 
-    }
 
     const logout = () => {
         setUser(null);

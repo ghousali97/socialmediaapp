@@ -1,8 +1,39 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './register.css';
-
+import { useState } from 'react';
+import axios from 'axios';
 
 function Register() {
+    const [inputs, setInputs] = useState({
+        username: "",
+        email: "",
+        name: "",
+        password: "",
+    });
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+
+    function handleInputs(event) {
+        var name = event.target.name;
+        var value = event.target.value;
+
+        setInputs((prev) => (
+            { ...prev, [name]: value }
+        ));
+    }
+
+
+    function register(event) {
+        event.preventDefault();
+        axios.post('http://127.0.0.1:4001/api/user/register', inputs)
+            .then((res) => {
+                if (res.status === 200) navigate('/login');
+            })
+            .catch((err) => {
+                if (err.response.status === 400) setError(err.response.data.error);
+                console.log(err);
+            })
+    }
     return (
         <div className="register">
             <div className='card'>
@@ -10,11 +41,12 @@ function Register() {
                 <div className='left'>
                     <span className='title'>Register</span>
                     <form>
-                        <input type="text" placeholder='Username' name='username' />
-                        <input type="text" placeholder='Email' name='email' />
-                        <input type="text" placeholder='Name' name='name' />
-                        <input type="text" placeholder='Password' name='password' />
-                        <button>Register</button>
+                        <input type="text" placeholder='Username' name='username' value={inputs.username} onChange={handleInputs} />
+                        <input type="text" placeholder='Email' name='email' value={inputs.email} onChange={handleInputs} />
+                        <input type="text" placeholder='Name' name='name' value={inputs.name} onChange={handleInputs} />
+                        <input type="text" placeholder='Password' name='password' value={inputs.password} onChange={handleInputs} />
+                        <button onClick={register}>Register</button>
+                        {error && <p>{error}</p>}
                     </form>
                     <a href="/login"><span className='link'>Already have an account?</span></a>
                 </div>
