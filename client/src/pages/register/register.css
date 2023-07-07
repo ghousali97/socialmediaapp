@@ -13,7 +13,7 @@
     background-color: white;
     border-radius: 10px;
     min-height: 600px;
-    width: 50%;
+    width: 75%;
     overflow: hidden;
 
 }
@@ -113,6 +113,10 @@
     cursor: pointer;
 }
 
+.register .card .left span.link {
+    display: none;
+
+}
 
 @media (max-width:480px) {
     .register {
@@ -143,6 +147,7 @@
     }
 
     .register .card .left span.link {
+        display: flex;
         font-size: 12px;
     }
 

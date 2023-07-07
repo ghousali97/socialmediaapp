@@ -13,7 +13,7 @@
     background-color: white;
     border-radius: 10px;
     min-height: 600px;
-    width: 50%;
+    width: 75%;
     overflow: hidden;
 
 }
@@ -114,6 +114,10 @@
     cursor: pointer;
 }
 
+.login .card .right span.link {
+    display: none;
+}
+
 @media (max-width:480px) {
     .login {
         background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
@@ -143,6 +147,7 @@
     }
 
     .login .card .right span.link {
+        display: flex;
         font-size: 12px;
     }
 
