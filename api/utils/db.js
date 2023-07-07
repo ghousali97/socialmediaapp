@@ -8,8 +8,8 @@ require('dotenv').config();
 // ca: fs.readFileSync("{ca-cert filename}")
 //}
 var connectionParams = {
-    host: "mysql-gak-2023.mysql.database.azure.com",
-    user: "gakadmin123",
+    host: process.env.DB_URL,
+    user: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     port: 3306,
