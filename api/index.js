@@ -4,6 +4,7 @@ const path = require('path');
 const port = process.env.PORT || 4000;
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const postRoutes = require('./routes/post');
 
 
 const db = require("./utils/db");
@@ -21,12 +22,14 @@ app.use((req, res, next) => {
 });
 app.use(express.json());
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://brave-dune-0803e6c00.3.azurestaticapps.net']
+    origin: ['http://localhost:3000', 'https://brave-dune-0803e6c00.3.azurestaticapps.net'],
+    credentials: true
 }));
 app.use(cookieParser());
 
 app.use('/api/auth/', authRoutes);
 app.use('/api/user/', userRoutes);
+app.use('/api/post/', postRoutes);
 app.listen(port, () => {
     console.log('server listening on port: ' + port);
 })

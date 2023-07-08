@@ -5,14 +5,18 @@ import Register from './pages/register/Register';
 import Home from './pages/home/Home';
 import Profile from './pages/profile/Profile';
 import { useContext } from 'react';
-import { DarkModeContext } from './context/darkModeContext';
 import { AuthContext } from './context/authContext';
+import {
+  QueryClient,
+  QueryClientProvider,
+
+} from '@tanstack/react-query'
 
 
 function App() {
-  const { darkMode } = useContext(DarkModeContext);
   const { user } = useContext(AuthContext);
-  console.log(darkMode);
+
+  const queryClient = new QueryClient();
 
 
 
@@ -49,9 +53,12 @@ function App() {
     }
   ]);
   return (
-    <div className="App">
-      <RouterProvider router={router} />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <RouterProvider router={router} />
+      </div>
+    </QueryClientProvider>
+
   );
 }
 

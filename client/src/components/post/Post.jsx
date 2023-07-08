@@ -7,6 +7,9 @@ import TextsmsOutlinedIcon from '@mui/icons-material/TextsmsOutlined';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import { useState } from 'react';
 import Comments from '../comments/Comments';
+
+
+
 function Post({ post }) {
     const isLiked = true;
 
@@ -28,7 +31,7 @@ function Post({ post }) {
             </div>
             <div className="body">
                 <div className='postDesc'>
-                    {post.desc && post.desc}
+                    {post.description && post.description}
                 </div>
                 {post.img && <img src={post.img} alt="" />}
 

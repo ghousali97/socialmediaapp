@@ -4,12 +4,21 @@ import Map from "../../assets/map.png";
 import Friend from "../../assets/friend.png";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
+import axiosInstance from "../../axios";
 
 const Share = () => {
     const [file, setFile] = useState(null);
     const [desc, setDesc] = useState("");
     const { user } = useContext(AuthContext);
 
+    function handleShare(event) {
+        event.preventDefault();
+        axiosInstance.post('/post/', { "desc": desc }).then((res) => {
+            setDesc("");
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
 
     return (
         <div className="share">
@@ -55,7 +64,7 @@ const Share = () => {
                         </div>
                     </div>
                     <div className="right">
-                        <button >Share</button>
+                        <button onClick={handleShare} >Share</button>
                     </div>
                 </div>
             </div>
