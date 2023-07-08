@@ -114,6 +114,11 @@
     cursor: pointer;
 }
 
+.login .card .right span.error {
+    color: red;
+    font-size: 12px;
+}
+
 .login .card .right span.link {
     display: none;
 }

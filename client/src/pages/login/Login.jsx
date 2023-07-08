@@ -94,9 +94,9 @@ function Login() {
                         <input type="text" placeholder='Password' name='password' value={inputs.password} onChange={handleChange} />
                         <button onClick={handleLogin}>Log In</button>
 
-                        {err && <p>
+                        {err && <span className="error">
                             {err}
-                        </p>}
+                        </span>}
 
                     </form>
                     <a href="/register"><span className='link'>Don't have an account?</span></a>
