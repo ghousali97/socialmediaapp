@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import './register.css';
 import { useState } from 'react';
-import axios from 'axios';
+import axios from '../../axios';
 
 function Register() {
     const [inputs, setInputs] = useState({
@@ -25,7 +25,7 @@ function Register() {
 
     function register(event) {
         event.preventDefault();
-        axios.post('http://127.0.0.1:4001/api/user/register', inputs)
+        axios.post('/user/register', inputs)
             .then((res) => {
                 if (res.status === 200) navigate('/login');
             })

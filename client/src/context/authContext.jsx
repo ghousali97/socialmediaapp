@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../axios";
 
 
 //this is the specific context that will be refered to by our useContext hook and hence it needs to be exported
@@ -24,7 +24,7 @@ export const AuthContextProvider = ({ children }) => {
     }, [user]);
 
     const login = async (inputs) => {
-        const res = await axios.post("http://localhost:4001/api/auth/login", inputs, { withCredentials: true, credentials: 'include' });
+        const res = await axios.post("/auth/login", inputs, { withCredentials: true, credentials: 'include' });
         setUser(res.data);
     };
 
