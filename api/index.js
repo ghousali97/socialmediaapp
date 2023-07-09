@@ -5,6 +5,7 @@ const port = process.env.PORT || 4000;
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
+const commentRoutes = require('./routes/comment');
 
 
 const db = require("./utils/db");
@@ -30,6 +31,7 @@ app.use(cookieParser());
 app.use('/api/auth/', authRoutes);
 app.use('/api/user/', userRoutes);
 app.use('/api/post/', postRoutes);
+app.use('/api/comment/', commentRoutes);
 app.listen(port, () => {
     console.log('server listening on port: ' + port);
 })

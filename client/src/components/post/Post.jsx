@@ -7,6 +7,7 @@ import TextsmsOutlinedIcon from '@mui/icons-material/TextsmsOutlined';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import { useState } from 'react';
 import Comments from '../comments/Comments';
+import moment from 'moment';
 
 
 
@@ -22,7 +23,7 @@ function Post({ post }) {
                     <img src={post.profilePic} alt=""></img>
                     <div className="userInfo">
                         <p>{post.name} </p>
-                        <span>1 min ago</span>
+                        <span>{moment(post.createdAt).fromNow()}</span>
                     </div>
                 </div>
                 <div className="topIcon">
@@ -55,7 +56,7 @@ function Post({ post }) {
             </div>
             {showComments &&
                 <div className='comments'>
-                    <Comments />
+                    <Comments postId={post.id} />
                 </div>}
         </div>
     )

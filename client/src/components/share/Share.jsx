@@ -5,19 +5,33 @@ import Friend from "../../assets/friend.png";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import axiosInstance from "../../axios";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const Share = () => {
     const [file, setFile] = useState(null);
     const [desc, setDesc] = useState("");
     const { user } = useContext(AuthContext);
+    const queryClient = useQueryClient();
+
+    const mutation = useMutation({
+        mutationFn: (postData) => {
+            return axiosInstance.post('/post', postData)
+        },
+        onSuccess: response => {
+            setDesc("");
+            queryClient.invalidateQueries("posts");
+
+        }
+    })
 
     function handleShare(event) {
         event.preventDefault();
-        axiosInstance.post('/post/', { "desc": desc }).then((res) => {
-            setDesc("");
-        }).catch((err) => {
-            console.log(err);
-        })
+        mutation.mutate({ desc: desc });
+        // axiosInstance.post('/post/', { "desc": desc }).then((res) => {
+        //     setDesc("");
+        // }).catch((err) => {
+        //     console.log(err);
+        // })
     }
 
     return (
