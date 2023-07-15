@@ -10,7 +10,7 @@ export const DarkModeContextProvider = ({ children }) => {
 
     const [darkMode, setDarkMode] = useState(
         //getItem returns are string so we need to parse it into JSON
-        JSON.parse(localStorage.getItem("darkmode")) || false
+        JSON.parse(localStorage.getItem("darkMode")) || false
 
     );
 
