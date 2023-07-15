@@ -9,12 +9,15 @@ const Comments = ({ postId }) => {
 
     const { user } = useContext(AuthContext);
     const [newComment, setNewComment] = useState("");
+
     const queryClient = useQueryClient();
     const { isLoading, error, data } = useQuery({
-        queryKey: ['comments'], //define the name of query yourself
+        queryKey: ['comments', postId], //define the name of query yourself
+        exact: true,
         queryFn: () =>
             axiosInstance.get('/comment?postId=' + postId).then(
-                (res) => res.data,
+                (res) => res.data
+
             ),
     })
 
@@ -24,7 +27,7 @@ const Comments = ({ postId }) => {
         },
         onSuccess: response => {
             setNewComment("");
-            queryClient.invalidateQueries("comments");
+            queryClient.invalidateQueries("comments", postId);
 
         }
     })
@@ -32,7 +35,6 @@ const Comments = ({ postId }) => {
     function sendComment(event) {
         event.preventDefault();
         mutation.mutate({ desc: newComment, postId: postId });
-
     }
 
     //Temporary
@@ -85,8 +87,6 @@ const Comments = ({ postId }) => {
 
                             </div>
                         </div>
-
-
                     </div>
                 )
             }))

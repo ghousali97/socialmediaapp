@@ -39,7 +39,8 @@ module.exports.issueJwt = (user) => {
     const name = user.name;
 
     const username = user.username;
-    const expiresIn = 86400000;
+    //const expiresIn = 86400000;
+    const expiresIn = 3600000;
     const payload = {
         sub: _id,
         name: name,

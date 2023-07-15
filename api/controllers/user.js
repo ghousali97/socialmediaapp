@@ -25,6 +25,23 @@ module.exports.getUser = (req, res) => {
 
 }
 
+module.exports.getUserByToken = (req, res) => {
+    const userId = req.user.id;
+    const search_query = "SELECT * FROM users where id=? LIMIT 1";
+    db.query(search_query, [userId], (err, search_result) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({ error: true, message: "Internal server error!" });
+        }
+        if (!search_result.length) return res.status(404).json({ error: "User doesn't exist" });
+
+        const { salt, hash, ...return_user } = search_result[0]
+        return res.status(200).json(return_user);
+    });
+
+
+}
+
 module.exports.getAllUsers = (req, res) => {
     const search_query = "SELECT * FROM users";
     db.query(search_query, (err, search_result) => {
@@ -97,7 +114,7 @@ module.exports.register = async (req, res) => {
 }
 
 module.exports.updateUser = (req, res) => {
-    const userId = req.params.userId;
+    const userId = req.user.id;
     const password = req.body.password;
     const newPassword = req.body.newPassword
 
@@ -105,7 +122,8 @@ module.exports.updateUser = (req, res) => {
     var profilePic = req.body.profilePic;
     var city = req.body.city;
     var website = req.body.website;
-
+    var name = req.body.name;
+    var email = req.body.email;
 
 
     const search_query = "SELECT * FROM users where id=? LIMIT 1";
@@ -136,10 +154,10 @@ module.exports.updateUser = (req, res) => {
             coverPic = coverPic ? coverPic : search_result[0].coverPic;
             profilePic = profilePic ? profilePic : search_result[0].profilePic;
             website = website ? website : search_result[0].website;
-
-
-            update_query = 'Update users SET coverPic=?,profilePic=?,city=?,website=? WHERE id=?';
-            db.query(update_query, [coverPic, profilePic, city, website, userId], (err, update_results) => {
+            name = name ? name : search_result[0].name;
+            email = email ? email : search_result[0].email;
+            update_query = 'Update users SET coverPic=?,profilePic=?,city=?,website=?,name=?,email=? WHERE id=?';
+            db.query(update_query, [coverPic, profilePic, city, website, name, email, userId], (err, update_results) => {
                 if (err) {
                     console.log(err);
                     return res.status(500).json({ error: true, message: "Internal server error!" });

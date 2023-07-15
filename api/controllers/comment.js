@@ -30,6 +30,22 @@ module.exports.getCommentByPost = (req, res) => {
     })
 }
 
+module.exports.getCommentCount = (req, res) => {
+    const postId = req.query.postId;
+    if (!postId) return res.status(400).json({ message: "Post Id is required" });
+    const search_query = 'SELECT c.*, name,profilePic from comments AS c JOIN users as u ON (u.id = c.userId) where postId = ?';
+
+    db.query(search_query, [postId], (err, search_results) => {
+        if (err) {
+            console.log(err); return res.status(500).json({ message: "Internal server error" });
+        }
+
+
+        return res.status(200).json({ commentCount: search_results.length });
+    })
+}
+
+
 module.exports.createComment = (req, res) => {
     const userId = req.user.id;
     const description = req.body.desc;

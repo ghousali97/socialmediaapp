@@ -15,6 +15,10 @@ import { AuthContext } from '../../context/authContext';
 
 
 function Topbar() {
+
+
+
+
     const { darkMode, toggle } = useContext(DarkModeContext);
     const { user, logout } = useContext(AuthContext);
 
@@ -55,10 +59,13 @@ function Topbar() {
                 <NotificationsOutlinedIcon />
             </div>
             <div className='user'>
+                <img src={process.env.REACT_APP_BACKEND_HOST_PUBLIC + '/upload/' + user.profilePic}
+                    alt="" />
 
-                <img src={user.img} alt="" />
                 <div className='username'>
-                    <span>{user.username}</span>
+                    <a href={"/profile/" + user.id}><span>{user.username}</span></a>
+
+
                 </div>
             </div>
         </div>

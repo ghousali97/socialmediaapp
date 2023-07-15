@@ -14,6 +14,19 @@ module.exports.getAllPost = (req, res) => {
     })
 }
 
+module.exports.getMyPost = (req, res) => {
+    const userId = req.user.id;
+    const search_query = 'SELECT p.*,u.id as userId, name, profilePic FROM posts AS p JOIN users AS u ON (u.id = p.userId AND p.userId = ?) ORDER BY p.createdAt DESC';
+
+    db.query(search_query, [userId], (err, search_results) => {
+        if (err) {
+            console.log(err); return res.status(500).json({ message: "Internal server error" });
+        }
+
+        return res.status(200).json(search_results);
+    })
+}
+
 module.exports.getTimelinePost = (req, res) => {
     const userId = req.user.id;
     const search_query = 'SELECT p.*, u.id as userId, name, profilePic FROM posts AS p JOIN users AS u ON (u.id = p.userId) JOIN relationships AS r ON (p.userId = r.followedUserId AND r.followingUserId = ?) ORDER BY p.createdAt DESC';

@@ -12,17 +12,24 @@ import Messages from "../../assets/10.png";
 import Tutorials from "../../assets/11.png";
 import Courses from "../../assets/12.png";
 import Fund from "../../assets/13.png";
+import { useContext } from 'react';
+import { AuthContext } from '../../context/authContext';
 
 
 
 function Leftbar() {
+
+    const { user } = useContext(AuthContext);
+
     return (
         <div className="leftbar">
             <div className='container'>
                 <div className='section'>
                     <div className='user'>
-                        <img alt="" src="https://media.licdn.com/dms/image/D4D03AQHCq385fHY7NQ/profile-displayphoto-shrink_800_800/0/1667140980041?e=2147483647&v=beta&t=8ZlApi5-pdNR2bVXO7wzdECfCC9XU44Voa5CNT3Y390" />
-                        <span>John Doe</span>
+                        <img src={process.env.REACT_APP_BACKEND_HOST_PUBLIC + '/upload/' + user.profilePic}
+                            alt="" />
+
+                        <span>{user.name}</span>
                     </div>
 
                     <div className='item'>

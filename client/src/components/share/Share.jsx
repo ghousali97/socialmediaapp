@@ -19,19 +19,32 @@ const Share = () => {
         },
         onSuccess: response => {
             setDesc("");
+            setFile(null);
             queryClient.invalidateQueries("posts");
 
         }
     })
 
-    function handleShare(event) {
+    //upload image before you upload the data. 
+    const upload = async (req, res) => {
+        try {
+            var formData = new FormData();
+            formData.append("file", file);
+            //your upload end point returns the file name which will be used to search for the file
+            const res = await axiosInstance.post('/upload', formData);
+
+            return res.data;
+        } catch (err) {
+            console.log(err);
+        }
+
+
+    }
+    async function handleShare(event) {
         event.preventDefault();
-        mutation.mutate({ desc: desc });
-        // axiosInstance.post('/post/', { "desc": desc }).then((res) => {
-        //     setDesc("");
-        // }).catch((err) => {
-        //     console.log(err);
-        // })
+        let imgUrl = file ? await upload() : "";
+        mutation.mutate({ desc: desc, img: imgUrl });
+
     }
 
     return (
@@ -39,7 +52,7 @@ const Share = () => {
             <div className="container">
                 <div className="top">
                     <div className="left">
-                        <img src={"/upload/" + user.profilePic} alt="" />
+                        <img src={process.env.REACT_APP_BACKEND_HOST_PUBLIC + '/upload/' + user.profilePic} alt="" />
                         <input
                             type="text"
                             placeholder={`What's on your mind ${user.name}?`}

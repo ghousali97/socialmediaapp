@@ -6,13 +6,21 @@ import {
     useQuery
 } from '@tanstack/react-query'
 
-const Posts = () => {
+const Posts = ({ myPost }) => {
     const { isLoading, error, data } = useQuery({
-        queryKey: ['posts'], //define the name of query yourself
-        queryFn: () =>
-            axios.get('/post').then(
+        queryKey: ['posts'],
+        exact: true, //define the name of query yourself
+        queryFn: () => {
+            if (myPost)
+                return axios.get('/post/mypost').then(
+                    (res) => res.data,
+                )
+            return axios.get('/post/timeline').then(
                 (res) => res.data,
-            ),
+            )
+
+        }
+        ,
     })
 
     //TEMPORARY

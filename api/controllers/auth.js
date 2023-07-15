@@ -40,10 +40,9 @@ module.exports.login = (req, res) => {
 
             return res.cookie("accessToken", jwt, {
                 httpOnly: true,
-                sameSite: 'none'
             })
                 .status(200)
-                .json(user);
+                .json({ user, accessToken: jwt });
 
         } catch (err) {
             console.log(err);

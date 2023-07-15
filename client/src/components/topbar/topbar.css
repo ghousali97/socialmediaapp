@@ -98,44 +98,7 @@
 }
 
 @media (max-width:900px) {
-    .topbar .right {
-        display: none;
+    .topbar {
+        flex-direction: column;
     }
-
-    .topbar .left {
-        position: relative;
-    }
-
-    .topbar .left .topbarIcon:nth-of-type(2),
-    .topbarIcon:nth-of-type(4) {
-        display: none;
-    }
-
-    .topbar .left .searchContainer {
-        display: flex;
-        width: 0%;
-        height: 0%;
-        align-items: center;
-        justify-content: flex-start;
-        border: none;
-        position: absolute;
-        right: 70px;
-
-        margin: 0px;
-        padding: 0px;
-    }
-
-    .topbar .left .searchContainer input {
-        display: none;
-    }
-
-    .topbar .left .topbarIcon.menuIcon {
-        display: flex;
-        position: absolute;
-        right: 0;
-
-    }
-
-
-
 }
