@@ -2,8 +2,9 @@ const passwordUtils = require('../utils/password-utils');
 
 const isAuthenticated = (req, res, next) => {
     const accessCookie = req.cookies['accessToken'];
-    const token = accessCookie?.token;
-
+    const token = req.headers['x-auth-token'];
+    //const token = accessCookie?.token;
+    console.log(token);
     if (!token) return res.status(401).json();
     try {
         const payload = passwordUtils.verifyJwt(token);
