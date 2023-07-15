@@ -73,11 +73,19 @@ function Profile() {
                                 <img src={process.env.REACT_APP_BACKEND_HOST_PUBLIC + '/upload/' + dataProfile.coverPic}
                                     alt=""
                                     className='cover'
+                                    onError={(e) => {
+                                        e.currentTarget.onerror = null;
+                                        e.currentTarget.src = "/images/cover.jpg"
+                                    }}
                                 />
                                 <img
                                     src={process.env.REACT_APP_BACKEND_HOST_PUBLIC + '/upload/' + dataProfile.profilePic}
                                     alt=""
                                     className="profilePic"
+                                    onError={(e) => {
+                                        e.currentTarget.onerror = null;
+                                        e.currentTarget.src = "/images/profile.jpeg"
+                                    }}
                                 />
                             </div>
 

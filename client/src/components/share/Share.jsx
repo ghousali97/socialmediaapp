@@ -51,7 +51,11 @@ const Share = () => {
             <div className="container">
                 <div className="top">
                     <div className="left">
-                        <img src={process.env.REACT_APP_BACKEND_HOST_PUBLIC + '/upload/' + user.profilePic} alt="" />
+                        <img src={process.env.REACT_APP_BACKEND_HOST_PUBLIC + '/upload/' + user.profilePic} alt=""
+                            onError={(e) => {
+                                e.currentTarget.onerror = null;
+                                e.currentTarget.src = "/images/profile.jpeg"
+                            }} />
                         <input
                             type="text"
                             placeholder={`What's on your mind ${user.name}?`}

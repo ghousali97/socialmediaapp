@@ -68,18 +68,23 @@ function Navbar({ menuOpen, setMenuOpen }) {
             <div className='topbarIcon mobileOn'>
                 <a href={"/profile/" + user.id}>  <PersonOutlineOutlinedIcon /></a>
             </div>
-            <div className='topbarIcon mobileOn' onClick={() => { logout() }}>
-                <LogoutIcon />
-            </div>
+
             <div className='topbarIcon mobileOff'>
                 <GridViewOutlinedIcon />
+            </div>
+            <div className='topbarIcon' onClick={() => { logout() }}>
+                <LogoutIcon />
             </div>
 
             <div className='user mobileOff'>
                 <img src={process.env.REACT_APP_BACKEND_HOST_PUBLIC + '/upload/' + user.profilePic}
+                    onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = "/images/profile.jpeg"
+                    }}
                     alt="" />
                 <div className='username'>
-                    <a href={"/profile/" + user.id}>{user.username}</a>
+                    <a href={"/profile/" + user.id}>{user.name}</a>
                 </div>
             </div>
         </div>

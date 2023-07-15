@@ -25,12 +25,7 @@ function Leftbar() {
         <div className="leftbar">
             <div className='container'>
                 <div className='section'>
-                    <div className='user'>
-                        <img src={process.env.REACT_APP_BACKEND_HOST_PUBLIC + '/upload/' + user.profilePic}
-                            alt="" />
 
-                        <span>{user.name}</span>
-                    </div>
 
                     <div className='item'>
                         <img src={Groups} alt="" />

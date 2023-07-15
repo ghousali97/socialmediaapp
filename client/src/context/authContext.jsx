@@ -8,7 +8,7 @@ export const AuthContext = createContext();
 
 //Context provider contains the details about our context and it's the element that will be used to wrap our application
 export const AuthContextProvider = ({ children }) => {
-    const inactivityTimeout = 10000;
+    const inactivityTimeout = 300000;
 
     //use useState hook to create variables we want our context to work with.
     const [user, setUser] = useState(

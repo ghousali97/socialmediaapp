@@ -57,7 +57,12 @@ function Post({ post, key }) {
         <div className="post">
             <div className="top">
                 <div className="user">
-                    <img src={process.env.REACT_APP_BACKEND_HOST_PUBLIC + '/upload/' + post.profilePic} alt="" />
+                    <img src={process.env.REACT_APP_BACKEND_HOST_PUBLIC + '/upload/' + post.profilePic} alt=""
+                        onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = "/images/profile.jpeg"
+                        }}
+                    />
                     <div className="userInfo">
                         <a href={"/profile/" + post.userId}><p>{post.name}</p></a>
                         <span>{moment(post.createdAt).fromNow()}</span>
