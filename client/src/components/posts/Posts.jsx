@@ -55,7 +55,7 @@ const Posts = ({ myPost }) => {
 
     return <div className="posts">
         {isLoading ? <p>Loading data...</p> :
-            (error ? <p>Something went wrong!</p> :
+            (error ? <p>Something went wrong!{error}</p> :
                 data.map(post => (
                     <Post post={post} key={post.id} />
                 ))
