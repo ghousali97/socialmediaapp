@@ -36,7 +36,6 @@ export const AuthContextProvider = ({ children }) => {
     //useEffect hook will be triggered when the application first loads and when dependencies are modified
     // using our context are loaded.
     useEffect(() => {
-        console.log('Use effect called for auth context!');
         localStorage.setItem('user', JSON.stringify(user));
     }, [user]);
 
@@ -50,9 +49,12 @@ export const AuthContextProvider = ({ children }) => {
 
     const login = async (inputs) => {
         const res = await axios.post("/auth/login", inputs, { withCredentials: true, credentials: 'include' });
-        setUser(res.data.user);
-        setTokenExpiry(parseJwt(res.data.accessToken.token).exp);
-        setInactivityExpiry(Date.now() + inactivityTimeout);
+        if (res.status === 200) {
+            setUser(res.data.user);
+            setTokenExpiry(parseJwt(res.data.accessToken.token).exp);
+            setInactivityExpiry(Date.now() + inactivityTimeout);
+        }
+
     };
 
 

@@ -40,6 +40,8 @@ module.exports.login = (req, res) => {
 
             return res.cookie("accessToken", jwt, {
                 httpOnly: true,
+                sameSite: 'None',
+                secure: true
             })
                 .status(200)
                 .json({ user, accessToken: jwt });
