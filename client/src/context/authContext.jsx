@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import axios from "../axios";
+import axiosInstance from "../axios";
 
 
 //this is the specific context that will be refered to by our useContext hook and hence it needs to be exported
@@ -14,6 +14,10 @@ export const AuthContextProvider = ({ children }) => {
     const [user, setUser] = useState(
         JSON.parse(localStorage.getItem('user')) || null
     );
+    const [token, setToken] = useState(
+        JSON.parse(localStorage.getItem('token')) || null
+    );
+
     const [tokenExpiry, setTokenExpiry] = useState(
         JSON.parse(localStorage.getItem('tokenExpiry')) || null
     );
@@ -42,26 +46,34 @@ export const AuthContextProvider = ({ children }) => {
     useEffect(() => {
         localStorage.setItem('tokenExpiry', JSON.stringify(tokenExpiry));
     }, [tokenExpiry]);
+    useEffect(() => {
+        localStorage.setItem('token', JSON.stringify(token));
+    }, [token]);
+
 
     useEffect(() => {
         localStorage.setItem('inactivityExpiry', JSON.stringify(inactivityExpiry));
     }, [inactivityExpiry]);
 
     const login = async (inputs) => {
-        const res = await axios.post("/auth/login", inputs, { withCredentials: true, credentials: 'include' });
+        const res = await axiosInstance.post("/auth/login", inputs, { withCredentials: true, credentials: 'include' });
         if (res.status === 200) {
             setUser(res.data.user);
+            setToken(res.data.accessToken?.token);
+            axiosInstance.defaults.headers.common['x-auth-token'] = res.data.accessToken?.token;
             setTokenExpiry(parseJwt(res.data.accessToken.token).exp);
             setInactivityExpiry(Date.now() + inactivityTimeout);
         }
-
     };
 
 
     const logout = () => {
         setUser(null);
+        setToken(null);
         setTokenExpiry(null);
         setInactivityExpiry(null);
+        axiosInstance.defaults.headers.common['x-auth-token'] = null;
+
 
     }
 

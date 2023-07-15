@@ -14,7 +14,7 @@ import { AuthContext } from '../../context/authContext';
 
 
 
-function Post({ post }) {
+function Post({ post, key }) {
 
 
     const [showComments, setShowComments] = useState(false);
