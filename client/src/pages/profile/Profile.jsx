@@ -1,7 +1,6 @@
 import Leftbar from '../../components/leftbar/Leftbar';
 import Posts from '../../components/posts/Posts';
 import RightBar from '../../components/rightbar/rightbar';
-import Topbar from '../../components/topbar/Topbar';
 import FacebookTwoToneIcon from '@mui/icons-material/FacebookTwoTone';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -19,6 +18,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/authContext';
 import Update from '../../components/update/Update';
 import Share from '../../components/share/Share';
+import Navbar from '../../components/navbar/Navbar';
 
 
 function Profile() {
@@ -60,7 +60,7 @@ function Profile() {
 
     return (
         <div className="home">
-            <Topbar />
+            <Navbar />
             <div className="homeContainer" style={{ display: 'flex' }}>
                 <Leftbar />
 
