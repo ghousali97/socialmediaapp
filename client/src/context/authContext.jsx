@@ -60,7 +60,7 @@ export const AuthContextProvider = ({ children }) => {
         if (res.status === 200) {
             setUser(res.data.user);
             setToken(res.data.accessToken?.token);
-            axiosInstance.defaults.headers.common['x-auth-token'] = res.data.accessToken?.token;
+            //   axiosInstance.defaults.headers.common['x-auth-token'] = res.data.accessToken?.token;
             setTokenExpiry(parseJwt(res.data.accessToken.token).exp);
             setInactivityExpiry(Date.now() + inactivityTimeout);
         }
@@ -72,7 +72,7 @@ export const AuthContextProvider = ({ children }) => {
         setToken(null);
         setTokenExpiry(null);
         setInactivityExpiry(null);
-        axiosInstance.defaults.headers.common['x-auth-token'] = null;
+        // axiosInstance.defaults.headers.common['x-auth-token'] = null;
 
 
     }
