@@ -1,0 +1,142 @@
+.navbar {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    min-height: 60px;
+    background-color: var(--bg);
+    color: var(--textColor);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--textColor);
+}
+
+.navbar .mobileOn {
+    display: none !important;
+}
+
+.navbar>* {
+    flex: 1;
+    width: 100%;
+
+}
+
+.navbar .left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.navbar .left .logo {
+    padding: 0px 10px;
+}
+
+.navbar .left .logo span {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--logo);
+}
+
+.navbar .left .topbarIcon {
+    margin: 0px 10px;
+}
+
+.navbar .left .searchContainer {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid gainsboro;
+    border-radius: 2px;
+    margin: 0px 5px;
+    padding: 0px 5px;
+}
+
+.navbar .left .searchContainer input {
+    border: none;
+    width: 100%;
+    height: 100%;
+
+    margin-left: 2px;
+    background-color: transparent;
+    color: var(--textColor);
+}
+
+.navbar .left .searchContainerMobile {
+    display: none;
+}
+
+.navbar .right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.navbar .right .user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 20px;
+}
+
+.navbar .right .user img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.navbar .right .user .username {
+    margin: 0px 10px;
+
+    font-weight: 500;
+}
+
+@media (max-width:480px) {
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .navbar .mobileOff {
+        display: none !important;
+    }
+
+    .navbar .mobileOn {
+        display: inline !important;
+    }
+
+
+
+
+    .navbar .left {
+        justify-content: space-between;
+        min-height: 50px;
+        border-bottom: 1px solid var(--border);
+
+    }
+
+    .navbar .right {
+        justify-content: space-evenly;
+        margin-left: 10px;
+        margin-right: 10px;
+        min-height: 40px;
+        background-color: var(--bg);
+        border-bottom: 1px solid var(--border);
+
+    }
+
+    .navbar .left .searchContainer {
+        display: none;
+    }
+
+    .navbar .left .searchContainerMobile {
+        display: flex;
+    }
+}

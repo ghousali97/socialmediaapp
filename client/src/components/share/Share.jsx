@@ -1,7 +1,6 @@
 import "./share.css";
 import Image from "../../assets/img.png";
-import Map from "../../assets/map.png";
-import Friend from "../../assets/friend.png";
+
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import axiosInstance from "../../axios";
@@ -81,14 +80,6 @@ const Share = () => {
                                 <span>Add Image</span>
                             </div>
                         </label>
-                        <div className="item">
-                            <img src={Map} alt="" />
-                            <span>Add Place</span>
-                        </div>
-                        <div className="item">
-                            <img src={Friend} alt="" />
-                            <span>Tag Friends</span>
-                        </div>
                     </div>
                     <div className="right">
                         <button onClick={handleShare} >Share</button>
