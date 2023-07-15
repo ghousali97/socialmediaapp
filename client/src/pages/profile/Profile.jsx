@@ -19,6 +19,7 @@ import { AuthContext } from '../../context/authContext';
 import Update from '../../components/update/Update';
 import Share from '../../components/share/Share';
 import Navbar from '../../components/navbar/Navbar';
+import { CircularProgress } from '@mui/material';
 
 
 function Profile() {
@@ -65,7 +66,9 @@ function Profile() {
                 <Leftbar />
 
                 <div className="center" style={{ flex: 25 }}>
-                    {isLoadingProfile || errorProfile ? <p> Loading!</p> :
+                    {isLoadingProfile || errorProfile ?
+                        <div className="progressContainer">
+                            <CircularProgress /> </div> :
 
                         <div className="profile">
 

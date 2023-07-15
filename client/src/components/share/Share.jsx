@@ -63,6 +63,7 @@ const Share = () => {
                             value={desc}
                         />
                     </div>
+
                     <div className="right">
                         {file && (
                             <img className="file" alt="" src={URL.createObjectURL(file)} />

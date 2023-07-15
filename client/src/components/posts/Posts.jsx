@@ -1,6 +1,7 @@
 import Post from "../post/Post";
 import "./posts.css";
 import axios from "../../axios";
+import CircularProgress from '@mui/material/CircularProgress';
 
 import {
     useQuery
@@ -54,7 +55,9 @@ const Posts = ({ myPost }) => {
     // ];
 
     return <div className="posts">
-        {isLoading ? <p>Loading data...</p> :
+        {isLoading ?
+            <div className="progressContainer">
+                <CircularProgress /> </div> :
             (error ? <p>Something went wrong!</p> :
                 data.map(post => (
                     <Post post={post} key={post.id} />
