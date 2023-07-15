@@ -2,7 +2,6 @@ import Leftbar from "../../components/leftbar/Leftbar";
 import Posts from "../../components/posts/Posts";
 import RightBar from "../../components/rightbar/rightbar";
 import Share from "../../components/share/Share";
-import Stories from "../../components/stories/Stories";
 import Navbar from "../../components/navbar/Navbar";
 import './home.css';
 
@@ -19,7 +18,6 @@ function Home() {
                 <Leftbar />
                 <div className="center" style={{ flex: 26 }}>
                     <Share />
-                    <Stories />
                     <Posts />
                 </div>
                 <RightBar />
