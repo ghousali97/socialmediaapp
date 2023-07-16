@@ -20,6 +20,7 @@ import Update from '../../components/update/Update';
 import Share from '../../components/share/Share';
 import Navbar from '../../components/navbar/Navbar';
 import { CircularProgress } from '@mui/material';
+const _ = require('lodash');
 
 
 function Profile() {
@@ -30,6 +31,7 @@ function Profile() {
 
     const { isLoading: isLoadingProfile, error: errorProfile, data: dataProfile } = useQuery({
         queryKey: ['userProfile'], //define the name of query yourself
+        exact: true,
         queryFn: () =>
             axiosInstance.get('/user/find/' + profileUserId).then(
                 (res) => res.data,
@@ -111,11 +113,11 @@ function Profile() {
                                     </a>
                                 </div>
                                 <div className='center'>
-                                    <span>{dataProfile.name}</span>
+                                    <span>{_.startCase(dataProfile.name)}</span>
                                     <div className="info">
                                         <div className="item">
                                             <PlaceIcon />
-                                            <span>{dataProfile.city ? dataProfile.city : "Unknown"}</span>
+                                            <span>{_.startCase(dataProfile.city) ? dataProfile.city : "Unknown"}</span>
                                         </div>
                                         <div className="item">
                                             <LanguageIcon />

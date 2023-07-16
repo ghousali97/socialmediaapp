@@ -17,7 +17,13 @@ import TimeoutModal from './components/timeoutmodal/TimeoutModal';
 function App() {
   const { user, logout } = useContext(AuthContext);
 
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false, // default: true
+      },
+    },
+  })
 
 
 

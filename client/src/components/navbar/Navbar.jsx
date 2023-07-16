@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import './navbar.css';
 import { AuthContext } from '../../context/authContext';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
@@ -10,32 +10,44 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { DarkModeContext } from '../../context/darkModeContext';
-import axiosInstance from '../../axios';
-
+import Searchbar from '../searchbar/Searchbar';
+import CloseIcon from '@mui/icons-material/Close';
 
 function Navbar({ menuOpen, setMenuOpen }) {
 
     const { user, logout } = useContext(AuthContext);
     const { darkMode, toggle } = useContext(DarkModeContext);
-    const [searchInput, setSearchInput] = useState('');
-    const [searchOpen, toggleSearchOpen] = useState(false);
+    const [toggleSearch, setToggleSearch] = useState(true);
+
+    const logoRef = useRef();
+    const searchIconRef = useRef();
+    const searchBarRef = useRef();
+    const cancelRef = useRef();
 
 
-    async function handleSearchInput(event) {
-        const value = event.target.value;
-        setSearchInput(value);
-        axiosInstance.get('/user/search?q=' + value).then((res) => {
-            console.log(res);
-        }).catch((err) => {
-            console.log(err);
-        });
+    function handleSearch() {
+        console.log('search clicked')
+        setToggleSearch(!toggleSearch);
 
+        if (toggleSearch) {
+            logoRef.current.style.display = 'none';
+            searchIconRef.current.style.display = 'none';
+
+            searchBarRef.current.style.display = 'flex'
+            cancelRef.current.style.display = 'flex'
+        }
+        else {
+            logoRef.current.style.display = 'flex';
+            searchIconRef.current.style.display = 'flex';
+
+            searchBarRef.current.style.display = 'none'
+            cancelRef.current.style.display = 'none'
+        }
 
     }
-
     return <div className={"navbar " + (menuOpen && "active")}>
         <div className='left'>
-            <div className='logo'><span>
+            <div className='logo' ref={logoRef}><span>
                 Fakebook!
             </span>
             </div>
@@ -45,12 +57,17 @@ function Navbar({ menuOpen, setMenuOpen }) {
             <div className='topbarIcon mobileOff' onClick={toggle}>
                 {darkMode ? <WbSunnyOutlinedIcon /> : <DarkModeOutlinedIcon />}
             </div>
-            <div className='searchContainer'>
-                <SearchOutlinedIcon className='searchIcon' />
-                <input placeholder='search' type="text" onChange={handleSearchInput} value={searchInput} />
+            <div className='topbarIcon searchIcon mobileOff'>
+                <Searchbar />
             </div>
-            <div className={'searchContainerMobile topbarIcon ' + (searchOpen && 'active')}>
-                <SearchOutlinedIcon className='searchIcon' onClick={() => { toggleSearchOpen(!searchOpen) }} />
+            <div className='topbarIcon searchmobileon' onClick={handleSearch} ref={searchIconRef}>
+                <SearchOutlinedIcon />
+            </div>
+            <div className='topbarIcon searchIcon searchmobileoff' ref={searchBarRef} >
+                <Searchbar />
+            </div>
+            <div className='topbarIcon searchmobileoff' id="cancelIcon" onClick={handleSearch} ref={cancelRef}>
+                <CloseIcon />
             </div>
 
         </div>

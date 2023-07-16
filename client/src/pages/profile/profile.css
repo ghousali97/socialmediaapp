@@ -122,8 +122,12 @@
         border-radius: 15px;
     }
 
+    .profile .profileContainer .center {
+        margin-top: 60px;
+    }
+
     .profile .profileContainer .center>span {
-        font-size: 22px;
+        font-size: 25px;
 
     }
 

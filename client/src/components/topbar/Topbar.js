@@ -64,8 +64,6 @@ function Topbar() {
 
                 <div className='username'>
                     <a href={"/profile/" + user.id}><span>{user.username}</span></a>
-
-
                 </div>
             </div>
         </div>

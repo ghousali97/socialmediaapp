@@ -11,6 +11,24 @@
     align-items: center;
 }
 
+
+.navbar .topbarIcon {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .searchIcon.topbarIcon {
+    width: 100%;
+}
+
+.navbar .topbarIcon.searchmobileoff {
+    display: none;
+}
+
+.navbar .topbarIcon.searchmobileon {
+    display: none;
+}
+
 .navbar a {
     text-decoration: none;
     color: var(--textColor);
@@ -109,7 +127,7 @@
     }
 
     .navbar .mobileOn {
-        display: inline !important;
+        display: flex !important;
     }
 
 
@@ -138,5 +156,18 @@
 
     .navbar .left .searchContainerMobile {
         display: flex;
+    }
+
+
+    .navbar .topbarIcon.searchmobileoff {
+        display: none;
+    }
+
+    .navbar .topbarIcon.searchmobileon {
+        display: flex;
+    }
+
+    #cancelIcon {
+        margin-left: 1px;
     }
 }

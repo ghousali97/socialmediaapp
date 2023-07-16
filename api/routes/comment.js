@@ -4,7 +4,7 @@ const isAuthenticated = require('../middleware/authMiddleware').isAuthenticated;
 
 router.get('/all', commentController.getAllComment);
 router.get('/', isAuthenticated, commentController.getCommentByPost);
-router.get('/count', isAuthenticated, commentController.getCommentCount);
+router.get('/count', isAuthenticated, commentController.getCommentCountByPost);
 router.post('/', isAuthenticated, commentController.createComment);
 //router.get('/timeline', isAuthenticated, postController.getTimelinePost);
 

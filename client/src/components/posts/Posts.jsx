@@ -8,6 +8,7 @@ import {
 } from '@tanstack/react-query'
 
 const Posts = ({ myPost }) => {
+
     const { isLoading, error, data } = useQuery({
         queryKey: ['posts'],
         exact: true, //define the name of query yourself

@@ -14,7 +14,7 @@ import { AuthContext } from '../../context/authContext';
 
 
 
-function Post({ post, key }) {
+function Post({ post }) {
 
 
     const [showComments, setShowComments] = useState(false);
@@ -36,17 +36,33 @@ function Post({ post, key }) {
         ,
     })
 
+
+
+    const { isLoading: isLoadingCountCount, error: errorCommentCount, data: commentCount } = useQuery({
+        queryKey: ['commentCount', post.id],
+        exact: true,
+        queryFn: () =>
+
+            axiosInstance.get('/comment/count?postId=' + post.id).then(
+                (res) => {
+                    return res.data
+                }
+
+            )
+        ,
+    })
+
+
     const likeMutation = useMutation({
         mutationFn: (liked) => {
             if (liked) return axiosInstance.delete('/like?postId=' + post.id);
             return axiosInstance.post('/like?postId=' + post.id)
         },
         onSuccess: response => {
-
-            queryClient.invalidateQueries(['likes', post.id]);
-
+            queryClient.invalidateQueries({ queryKey: ['likes', post.id] });
         }
     })
+
 
     function handleLike() {
         likeMutation.mutate(data.includes(user.id));
@@ -89,7 +105,7 @@ function Post({ post, key }) {
                     setShowComments(!showComments);
                 }}>
                     <TextsmsOutlinedIcon />
-                    <p>0 comment</p>
+                    <p> {isLoadingCountCount || errorCommentCount ? 0 : commentCount.commentCount} comments</p>
                 </div>
                 <div className='bottomIcons'>
                     <ShareOutlinedIcon />

@@ -28,15 +28,25 @@ module.exports.getUser = (req, res) => {
 module.exports.getUserByQuery = (req, res) => {
     const q = req.query.q;
     console.log(q);
-    const search_query = 'SELECT username FROM users where name like "%?%" OR city like "%?%"';
-    db.query(search_query, (err, [q], search_result) => {
+    if (q === "") {
+        return res.status(404).json({ error: "User doesn't exist" });
+
+    }
+    const search_params = '%' + q + '%';
+    const search_query = 'SELECT * FROM users WHERE name LIKE ? OR username LIKE ? ';
+    db.query(search_query, [search_params, search_params], (err, search_result) => {
         if (err) {
             console.log(err);
             return res.status(500).json({ error: true, message: "Internal server error!" });
         }
-        if (!search_result.length) return res.status(404).json({ error: "User doesn't exist" });
+        console.log(search_result)
 
-        return res.status(200).json(search_result);
+        if (!search_result.length) return res.status(404).json({ error: "User doesn't exist" });
+        const return_users = search_result.map((user) => {
+            const { name, city, id } = user;
+            return return_user = { id, name, city }
+        })
+        return res.status(200).json(return_users);
     });
 
 

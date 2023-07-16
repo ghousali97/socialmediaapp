@@ -3,6 +3,7 @@ import './comments.css';
 import { AuthContext } from '../../context/authContext';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axiosInstance from '../../axios';
+import ProgressWidget from '../progresswidget/ProgressWidget';
 
 
 const Comments = ({ postId }) => {
@@ -16,22 +17,23 @@ const Comments = ({ postId }) => {
         exact: true,
         queryFn: () =>
             axiosInstance.get('/comment?postId=' + postId).then(
-                (res) => res.data
+                (res) => {
+                    return res.data
+                }
 
             ),
     })
-
     const mutation = useMutation({
         mutationFn: (postData) => {
             return axiosInstance.post('/comment', postData)
         },
         onSuccess: response => {
             setNewComment("");
-            queryClient.invalidateQueries("comments", postId);
+            queryClient.invalidateQueries({ queryKey: ["comments", postId] });
+            queryClient.invalidateQueries({ queryKey: ["commentCount", postId] });
 
         }
     })
-
     function sendComment(event) {
         event.preventDefault();
         mutation.mutate({ desc: newComment, postId: postId });
@@ -59,19 +61,22 @@ const Comments = ({ postId }) => {
 
     return (
         <div className='comments'>
-            <div className='write'>
-                <img alt="" src={user.img} />
-                <input name="myComment" placeholder='Write your comment ... ' value={newComment} onChange={(e) => {
-                    setNewComment(e.target.value);
-                }
-                } />
-                <button onClick={sendComment}>Send</button>
-            </div>
-            {isLoading ? <p>Loading ...</p> : (error ? <p>Something is wrong </p> : data.map((comment) => {
+            {(mutation.isLoading || mutation.isError) ? <ProgressWidget /> :
+                <div className='write'>
+                    <img alt="" src={process.env.REACT_APP_BACKEND_HOST_PUBLIC + '/upload/' + user.profilePic} />
+                    <input name="myComment" placeholder='Write your comment ... ' value={newComment} onChange={(e) => {
+                        setNewComment(e.target.value);
+                    }
+                    } />
+                    <button onClick={sendComment}>Send</button>
+
+                </div>}
+
+            {isLoading ? <ProgressWidget /> : (error ? <p>Something is wrong </p> : data.map((comment) => {
                 return (
                     <div className='comment'>
                         <div className='user'>
-                            <img alt="" src={comment.profilePicture} />
+                            <img alt="" src={process.env.REACT_APP_BACKEND_HOST_PUBLIC + '/upload/' + comment.profilePic} />
                         </div>
                         <div className='info'>
                             <div className='centre'>
@@ -86,12 +91,17 @@ const Comments = ({ postId }) => {
                                 <p>1 hour ago</p>
 
                             </div>
+
                         </div>
+
                     </div>
+
                 )
             }))
 
             }
+
+
 
         </div>
     )
